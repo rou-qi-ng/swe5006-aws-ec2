@@ -38,6 +38,7 @@ public class AvailabilityController {
         }
     }
 
+    
     @GetMapping("/{serviceId}/appointment")
     public ResponseEntity<List<Appointment>> getAppointmentsById(@PathVariable("serviceId") int serviceId) {
         List<Appointment> appointments = availabilityManager.getAppointmentsById(serviceId);
