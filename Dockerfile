@@ -32,9 +32,8 @@ COPY /beautyApp/backend .
 RUN mvn package -DskipTests
 
 
-
 # Stage 3: Final image
-FROM openjdk:17-alpine
+FROM eclipse-temurin:17-jdk-alpine
 
 # Set the working directory
 WORKDIR /beautyApp
@@ -49,4 +48,4 @@ COPY --from=backend /beautyApp/backend/target/beautyApp-0.0.1-SNAPSHOT.jar ./bea
 EXPOSE 8080
 
 # Command to run the application
-CMD ["java", "-jar", "beautyApp.jar", "server.js", "node"]
+CMD ["java", "-jar", "beautyApp.jar"]
