@@ -26,8 +26,8 @@
 # # Start Nginx when the container is run
 # CMD ["nginx", "-g", "daemon off;"]
 
-# Use Node.js as the base image
-FROM node:18
+# Use an official Node.js runtime as the base image
+FROM node:18 as build-stage
 
 # Set the working directory
 WORKDIR /app
@@ -36,20 +36,26 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 
-# Install Express
-RUN npm install express
-
 # Copy the Angular app source code
 COPY . .
 
 # Build the Angular app
 RUN npm run build --prod
 
-# Create an Express server to serve the built Angular app
-COPY server.js .
+# Use a different base image if not using Nginx
+# For example, you can use node:18 again and use a simple script to serve static files
 
-# Expose the port your Express server will listen on
+# FROM node:18
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the build output from the build-stage
+COPY --from=build-stage /app/dist/frontend /app/public
+
+# Expose the port your server will listen on (e.g., 3000)
 EXPOSE 3000
 
-# Start the Express server when the container is run
-CMD ["node", "server.js"]
+# You can use a simple Node.js script to serve the built app
+# For example, with express:
+CMD ["node", "app.js"]
