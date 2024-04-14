@@ -16,6 +16,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - name: Build Project
+        working-directory: /home/runner/work/swe5006-aws-ec2/swe5006-aws-ec2/beautyApp/backend
         run: mvn clean install -DskipTests
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
