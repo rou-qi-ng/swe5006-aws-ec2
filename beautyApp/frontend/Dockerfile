@@ -45,8 +45,8 @@ RUN npm run build --prod
 # Use a different base image (node:18) to serve the built app
 FROM node:18
 
-# Set the working directory
-WORKDIR /app
+# # Set the working directory
+# WORKDIR /app
 
 # Copy the build output from the build-stage
 COPY --from=build-stage /app/dist/frontend /app/public
