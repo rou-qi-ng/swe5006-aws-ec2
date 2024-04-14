@@ -79,6 +79,10 @@ RUN npm install
 # Copy the application source code
 COPY . .
 
+# Copy the build output from the build-stage
+COPY --from=build-stage /app/dist/frontend /app/frontend/dist/frontend
+
+
 # Expose the port your application will run on
 EXPOSE 3000
 
