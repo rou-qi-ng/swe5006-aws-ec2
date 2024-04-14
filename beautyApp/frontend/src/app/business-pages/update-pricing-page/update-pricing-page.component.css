@@ -1,0 +1,31 @@
+
+.authentication-card {
+    width: 60%;
+    margin: 0 auto;
+    
+}
+
+.authentication-card-container {
+    min-height: 100vh;
+}
+
+.background{
+    background-color: #D8C2A5;
+}
+
+button{
+    background-color: #8e3a06eb; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+mat-card-title{
+    color: white;
+}

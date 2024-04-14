@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>sg.gov.spf.espent</groupId>
+  <artifactId>espent-microservice-internet</artifactId>
+  <versioning>
+    <versions>
+      <version>0.0.1-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20240326023729</lastUpdated>
+  </versioning>
+</metadata>

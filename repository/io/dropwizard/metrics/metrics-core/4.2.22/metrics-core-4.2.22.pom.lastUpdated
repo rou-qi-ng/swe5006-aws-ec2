@@ -1,0 +1,8 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Mar 18 15:25:37 SGT 2024
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1710746736513
+https\://build.shibboleth.net/nexus/content/repositories/releases/.error=Could not transfer artifact io.dropwizard.metrics\:metrics-core\:pom\:4.2.22 from/to shibboleth (https\://build.shibboleth.net/nexus/content/repositories/releases/)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact io.dropwizard.metrics\:metrics-core\:pom\:4.2.22 from/to central (https\://repo.maven.apache.org/maven2)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+https\://build.shibboleth.net/nexus/content/groups/public/.error=Could not transfer artifact io.dropwizard.metrics\:metrics-core\:pom\:4.2.22 from/to shib-release (https\://build.shibboleth.net/nexus/content/groups/public)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+@default-shib-release-https\://build.shibboleth.net/nexus/content/groups/public/.lastUpdated=1710746737214
+@default-shibboleth-https\://build.shibboleth.net/nexus/content/repositories/releases/.lastUpdated=1710746735760

@@ -1,0 +1,81 @@
+<body>
+
+  <mat-drawer-container class="example-container" hasBackdrop="false">
+    <mat-drawer #drawer mode="side">
+      <img style="height: auto; width:60%; margin-left:20%;" src="logo.png" > 
+      <div class="main-content-wrapper">
+        <a  style="color: beige; cursor: pointer;" (click)= "routeTo('nails')" (click)="drawer.toggle()">Nails</a>
+        <a  style="color: beige; cursor: pointer;"  (click) = "routeTo('lash')" (click)="drawer.toggle()">Lashes</a>
+        <a  style="color: beige; cursor: pointer;"  (click) = "returnToDashBoard()" (click)="drawer.toggle()">Home</a>
+        <a  style="color: beige; cursor: pointer;"  (click)="logout()">Log out</a>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+   
+      <input type="checkbox"  class="openSidebarMenu" id="openSidebarMenu">
+      <label for="openSidebarMenu" (click)="drawer.toggle()" class="sidebarIconToggle">
+          <div class="spinner diagonal part-1"></div>
+          <div class="spinner horizontal"></div>
+          <div class="spinner diagonal part-2"></div>
+      </label>
+      <div class="search-section">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Search for {{service}}</mat-card-title>
+           
+          </mat-card-header>
+          <mat-card-content>
+            <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+              <div class="example-form-fields">
+                <mat-form-field style="width: 100%;">
+                  <mat-label>Shop Name</mat-label>
+                  <input matInput formControlName="shopName" placeholder="Shop Name">
+                </mat-form-field>
+              </div>
+              <mat-card-actions align="end">
+                <button mat-button type="submit">Search</button>
+              </mat-card-actions>
+            </form>
+          </mat-card-content>
+        
+        </mat-card>
+        
+      </div>
+
+      <br>
+
+      <div *ngIf="searchSuccess">
+        <mat-card *ngFor="let item of search">
+          <mat-card-header>
+            <mat-card-title>
+              <a  style="color: beige; cursor: pointer;" (click)= "shopPath(item.serviceId)">{{ item.serviceName }}</a>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Location: {{ item.serviceLocation }}</p>
+            <p>Description: {{ item.serviceDescription }}</p>
+            
+          </mat-card-content>
+        </mat-card>
+        <br>
+      </div>
+      
+      <div *ngIf="!searchSuccess">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Unable to find Shop</mat-card-title>
+          </mat-card-header>
+        </mat-card>
+        <br>
+      </div>
+
+    </mat-drawer-content>
+   
+    
+      
+  </mat-drawer-container>
+  
+  
+  
+
+</body>

@@ -1,0 +1,95 @@
+<body>
+
+  <mat-drawer-container class="example-container" hasBackdrop="false">
+    <mat-drawer #drawer mode="side">
+      
+      <img style="height: auto; width:60%; margin-left:20%;" src="logo.png" > 
+      <div class="main-content-wrapper">
+        <a  style="color: beige; cursor: pointer;" (click)= "routeTo('nails')" (click)="drawer.toggle()">Nails</a>
+        <a  style="color: beige; cursor: pointer;"  (click) = "routeTo('lash')" (click)="drawer.toggle()">Lashes</a>
+        <a  style="color: beige; cursor: pointer;"  (click) = "returnToDashBoard()" (click)="drawer.toggle()">Home</a>
+        <a  style="color: beige; cursor: pointer;"  (click)="logout()">Log out</a>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+   
+      <input type="checkbox"  class="openSidebarMenu" id="openSidebarMenu">
+      <label for="openSidebarMenu" (click)="drawer.toggle()" class="sidebarIconToggle">
+          <div class="spinner diagonal part-1"></div>
+          <div class="spinner horizontal"></div>
+          <div class="spinner diagonal part-2"></div>
+      </label>
+      
+      <div class="service-card">
+        <div class="service-card-content">
+          <div *ngIf="serviceDetails" class="service-row">
+
+              <div class="profile-image-container">
+                <ng-container *ngIf="profileLogos">
+                  <img *ngFor="let profileLogo of profileLogos" [src]="getBlobUrl(profileLogo.portfolioData)" alt="Image" class="profile-image">
+                </ng-container>
+                <ng-container *ngIf="!profileLogos">
+                  <img src="logo.png" alt="Image" class="profile-image">
+                </ng-container>
+              </div>
+              
+              <div class="service-details">
+                <p class="service-name">{{ serviceDetails.serviceName | uppercase }}</p>
+                <p>{{ serviceDetails.serviceLocation }}</p>
+                <p><a class="google-maps-link" href="https://www.google.com/maps/search/?api=1&query={{ serviceDetails.serviceLocation }}">See Maps</a></p>
+              </div>
+
+            </div>
+        </div>
+      </div>
+
+      <div class="tab-bar" *ngIf="serviceDetails">
+        <button [routerLink]="['/serviceProfile', serviceDetails.serviceId]" class="service-button">Portfolio</button>
+        <button [routerLink]="['/serviceProfile', serviceDetails.serviceId, 'pricing']" class="service-button">Pricing</button>
+        <button [routerLink]="['/serviceProfile', serviceDetails.serviceId, 'availability']" class="service-button">Availability</button>
+        <button [routerLink]="['/serviceProfile', serviceDetails.serviceId, 'review']" class="service-button">Review</button>
+      </div>
+
+
+      
+
+      <div class="pricing-card">
+        <div class="pricing-card-header">
+          <div class="pricing-card-title">Catalog</div>
+        </div>
+        
+        <div *ngIf="loading" class="pricing-card-loading">
+          Loading...
+        </div>
+
+        <div class="pricing-card-content" *ngIf="!loading && (regularPricings.length > 0 || addOns.length > 0)">
+          <!-- Regular Pricings -->
+          <div *ngFor="let pricing of regularPricings" class="pricing-row">
+            <div>{{ pricing.pricingName }}</div>
+            <div class="pricing-cost">{{ pricing.pricingCost | number:'1.0-0' }}</div>
+          </div>
+      
+          <!-- Add Ons -->
+          <div *ngIf="addOns.length > 0" class="add-ons">
+            <div class="pricing-card-title">Add Ons</div>
+            <div *ngFor="let pricing of addOns" class="pricing-row">
+              <div>{{ pricing.pricingName }}</div>
+              <div class="pricing-cost">{{ pricing.pricingCost | number:'1.0-0' }}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pricing-card-content" *ngIf="!loading && regularPricings.length === 0 && addOns.length === 0">
+          <p class="no-pricing">No pricing available at the moment</p>
+        </div>
+      </div>
+      
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+  
+
+
+
+  
+</body>

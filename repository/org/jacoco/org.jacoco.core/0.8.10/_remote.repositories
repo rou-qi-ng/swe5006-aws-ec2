@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Wed Mar 06 18:10:24 SGT 2024
+org.jacoco.core-0.8.10.jar>central=
+org.jacoco.core-0.8.10.pom>central=

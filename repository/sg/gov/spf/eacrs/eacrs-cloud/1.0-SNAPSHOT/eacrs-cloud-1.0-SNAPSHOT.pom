@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>sg.gov.spf.eacrs</groupId>
+    <artifactId>eacrs-cloud</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <!-- SonarQube Settings -->
+        <sonar.projectName>spf-eacrs</sonar.projectName>
+        <sonar.sources>src/main/java</sonar.sources>
+        <sonar.coverage.exclusions>**src/test/**/*.*,**src/main/**/config/*.*,**src/main/**/constants/*.*,
+            **service-discovery/src/main/**/*.*,**service-proxy/src/main/**/*.*,**common/**/src/main/**/*.*</sonar.coverage.exclusions>
+        <sonar.exclusions>**src/test/**/*.*</sonar.exclusions>
+        <sonar.exclusions>**src/test/**/*.*</sonar.exclusions>
+        <sonar.test.exclusions>**src/test/**/*.*</sonar.test.exclusions>
+    </properties>
+
+    <modules>
+        <module>internet-backend</module>
+        <module>intranet-backend</module>
+    </modules>
+</project>

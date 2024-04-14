@@ -1,0 +1,30 @@
+
+  body, mat-drawer-container{
+    background-color: #D8C2A5;
+    height: 100%;
+  }
+
+  mat-drawer{
+    width: 30%;
+    height: 100%;
+  }
+
+  .search-section{
+    margin-top: 2%;
+    width: 70%;
+    margin-left: 15%;
+  }
+
+  mat-drawer{
+    width: 30%;
+    height: 100%;
+    background-color: #C6B4B4;
+  }
+
+  a{
+    background-color: #C6B4B4;
+    border-color: #C6B4B4;
+  }
+ 
+ 
+

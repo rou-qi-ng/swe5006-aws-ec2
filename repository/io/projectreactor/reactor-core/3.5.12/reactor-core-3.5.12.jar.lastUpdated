@@ -1,0 +1,12 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Mar 18 15:26:17 SGT 2024
+https\://repo.spring.io/libs-snapshot-local/.error=Could not transfer artifact io.projectreactor\:reactor-core\:jar\:3.5.12 from/to spring-snapshots (https\://repo.spring.io/libs-snapshot-local)\: status code\: 409, reason phrase\:  (409)
+https\://oss.sonatype.org/content/repositories/snapshots/.lastUpdated=1710746775989
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1710731238428
+https\://oss.sonatype.org/content/repositories/snapshots/.error=
+https\://repo.spring.io/libs-milestone-local/.error=
+https\://repo.spring.io/libs-milestone-local/.lastUpdated=1710746776766
+@default-spring-snapshots-https\://repo.spring.io/libs-snapshot-local/.lastUpdated=1710746776423
+@default-spring-releases-https\://repo.spring.io/release/.lastUpdated=1710746777064
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact io.projectreactor\:reactor-core\:jar\:3.5.12 from/to central (https\://repo.maven.apache.org/maven2)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+https\://repo.spring.io/release/.error=Could not transfer artifact io.projectreactor\:reactor-core\:jar\:3.5.12 from/to spring-releases (https\://repo.spring.io/release)\: status code\: 401, reason phrase\:  (401)

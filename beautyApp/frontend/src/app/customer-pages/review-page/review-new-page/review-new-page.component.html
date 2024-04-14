@@ -1,0 +1,86 @@
+<body>
+
+  <mat-drawer-container class="example-container" hasBackdrop="false">
+    <mat-drawer #drawer mode="side">
+      
+      <img style="height: auto; width:60%; margin-left:20%;" src="logo.png" > 
+      <div class="main-content-wrapper">
+        <a  style="color: beige; cursor: pointer;" (click)= "routeTo('nails')" (click)="drawer.toggle()">Nails</a>
+        <a  style="color: beige; cursor: pointer;"  (click) = "routeTo('lash')" (click)="drawer.toggle()">Lashes</a>
+        <a  style="color: beige; cursor: pointer;"  (click) = "returnToDashBoard()" (click)="drawer.toggle()">Home</a>
+        <a  style="color: beige; cursor: pointer;"  (click)="logout()">Log out</a>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content>
+   
+      <input type="checkbox"  class="openSidebarMenu" id="openSidebarMenu">
+      <label for="openSidebarMenu" (click)="drawer.toggle()" class="sidebarIconToggle">
+          <div class="spinner diagonal part-1"></div>
+          <div class="spinner horizontal"></div>
+          <div class="spinner diagonal part-2"></div>
+      </label>
+      
+      <div class="service-card">
+        <div class="service-card-content">
+          <div *ngIf="serviceDetails" class="service-row">
+
+              <div class="profile-image-container">
+                <ng-container *ngIf="profileLogos">
+                  <img *ngFor="let profileLogo of profileLogos" [src]="getBlobUrl(profileLogo.portfolioData)" alt="Image" class="profile-image">
+                </ng-container>
+                <ng-container *ngIf="!profileLogos">
+                  <img src="logo.png" alt="Image" class="profile-image">
+                </ng-container>
+              </div>
+              
+              <div class="service-details">
+                <p class="service-name">{{ serviceDetails.serviceName | uppercase }}</p>
+                <p>{{ serviceDetails.serviceLocation }}</p>
+                <p><a class="google-maps-link" href="https://www.google.com/maps/search/?api=1&query={{ serviceDetails.serviceLocation }}">See Maps</a></p>
+              </div>
+
+            </div>
+        </div>
+      </div>
+
+      <div class="tab-bar" *ngIf="serviceDetails">
+        <button [routerLink]="['/serviceProfile', serviceDetails.serviceId]" class="service-button">Portfolio</button>
+        <button [routerLink]="['/serviceProfile', serviceDetails.serviceId, 'pricing']" class="service-button">Pricing</button>
+        <button [routerLink]="['/serviceProfile', serviceDetails.serviceId, 'availability']" class="service-button">Availability</button>
+        <button [routerLink]="['/serviceProfile', serviceDetails.serviceId, 'review']" class="service-button">Review</button>
+      </div>
+
+      
+
+      <div class="review-card">
+        <div class="review-card-header">
+          <div class="review-card-title">New Review</div>
+        </div>
+        
+        <form [formGroup]="newReviewForm" (ngSubmit)="submitReview()">
+          <div class="form-group">
+            <label for="rating">Rating:</label>
+            <input type="number" class="form-control" id="rating" formControlName="rating" required>
+          </div>
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" formControlName="description" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+      </div>
+        
+
+        
+     
+      
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+  
+
+
+
+  
+</body>

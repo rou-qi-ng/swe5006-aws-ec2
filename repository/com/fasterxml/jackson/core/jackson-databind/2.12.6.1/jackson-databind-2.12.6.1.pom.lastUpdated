@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Mar 19 11:40:44 SGT 2024
+https\://dl.bintray.com/jwtk/coveralls-maven-plugin/.error=Could not transfer artifact com.fasterxml.jackson.core\:jackson-databind\:pom\:2.12.6.1 from/to bintray-jwtk-coveralls-maven-plugin (https\://dl.bintray.com/jwtk/coveralls-maven-plugin)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+https\://repo.maven.apache.org/maven2/.lastUpdated=1710819644726
+@default-bintray-jwtk-coveralls-maven-plugin-https\://dl.bintray.com/jwtk/coveralls-maven-plugin/.lastUpdated=1710731222083

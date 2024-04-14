@@ -1,0 +1,46 @@
+<body>
+
+<div class="container">
+    <div class="body">
+        <input type="checkbox"  class="openSidebarMenu" id="openSidebarMenu">
+        <label for="openSidebarMenu" class="sidebarIconToggle">
+            <div class="spinner diagonal part-1"></div>
+            <div class="spinner horizontal"></div>
+            <div class="spinner diagonal part-2"></div>
+        </label>
+        <div id="sidebarMenu">
+              <div class="main-content-wrapper">
+                  <a href="/">Nails</a>
+                  <a href="/">Lashes</a>
+                  <a (click)="logout()">Log out</a>
+              </div>
+          </div>
+      </div>
+    <h2 class="text-center">User List</h2>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th >Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td> {{ user.name }} </td>
+                <td> {{ user.name }} </td>
+                <td> {{ user.name }} </td>
+                <td>
+                    <button (click) = "updateUser(user.userId)" class="btn btn-info">Update</button>
+                    <button (click) = "deleteUser(user.userId)" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+
+        <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+    </table>
+
+
+</div>
+</body>

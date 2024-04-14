@@ -1,0 +1,115 @@
+<div class="background">
+  <div class="authentication-card-container" fxLayout="column" fxLayoutAlign="center">
+    <mat-card class="authentication-card">
+      <ng-container *ngIf="serviceId !== null">
+        <mat-card-header>
+          <mat-card-title>Update Service</mat-card-title>
+        </mat-card-header>
+      </ng-container>
+      <ng-container *ngIf="serviceId === null">
+        <mat-card-header>
+          <mat-card-title>Create Service</mat-card-title>
+        </mat-card-header>
+      </ng-container>
+      <mat-card-header>
+        <mat-card-subtitle>Details</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="center stretch" enctype="multipart/form-data">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="service_name" />
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput type="text" formControlName="service_description" />
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>Service Type</mat-label>
+            <input matInput type="text" formControlName="service_type" />
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <mat-label>Location</mat-label>
+            <input matInput type="text" formControlName="service_location" />
+          </mat-form-field>
+          <br />
+          <mat-card-header>
+            <mat-card-subtitle>Service Menu (Pricing List)</mat-card-subtitle>
+          </mat-card-header>
+          <table class="table table-stripped" *ngIf="serviceId !== null">
+            <thead>
+              <tr>
+                <th>Service Name</th>
+                <th>Type</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let s of products">
+                <td>{{ s.pricingName }}</td>
+                <td>{{ s.pricingCost }}</td>
+                <td>
+                  <button (click)="updatePricing(s.pricingId)" class="btn btn-info">Update</button>
+                  <button (click)="deletePricing(s.pricingId)" class="btn btn-danger">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+            <br /><br />
+          </table>
+          <ng-container>
+            <div class="example-container" *ngFor="let product of products; let i = index">
+              <mat-form-field>
+                <input matInput placeholder="Service Name" formControlName="productName{{i}}">
+              </mat-form-field>
+              <mat-form-field>
+                <span matPrefix style="color: white;">$&nbsp;</span>
+                <input matInput type="number" placeholder="Service Price" formControlName="productPrice{{i}}">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Service Add On</mat-label>
+                <mat-select formControlName="productAddon{{i}}">
+                  <mat-option value="yes">Yes</mat-option>
+                  <mat-option value="no">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <button mat-icon-button color="warn" (click)="removeProduct(i)">
+                <mat-icon>remove_circle</mat-icon>
+              </button>
+              <button mat-raised-button color="primary" (click)="addProduct()">Add Product</button>
+            </div>
+            <br />
+          </ng-container>
+          <mat-card-header>
+            <mat-card-subtitle>Photo Listing</mat-card-subtitle>
+          </mat-card-header>
+          <div>
+            <button type="button">
+              <input type="file" multiple (change)="onFileSelected($event)" accept="image/*" />
+            </button>
+          </div>
+          <div *ngIf="serviceId !== null">
+            <div class="image-container">
+              <div *ngFor="let photo of images">
+                <img [src]="getBlobUrl(photo.portfolioData)" alt="Portfolio Image" class="profile-image" />
+                <button  class="delete-button" mat-icon-button color="warn" (click)="deletePhoto(photo.portfolioId)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button type="button" color="primary" (click)="onSubmit()">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <p>&copy; 2024 Nails Service. All rights reserved.</p>
+  </div>
+</footer>

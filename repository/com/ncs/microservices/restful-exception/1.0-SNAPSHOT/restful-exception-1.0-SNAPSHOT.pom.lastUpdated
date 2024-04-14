@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Mar 18 15:25:32 SGT 2024
+https\://oss.sonatype.org/content/repositories/snapshots/.lastUpdated=1709710479956
+https\://oss.sonatype.org/content/repositories/snapshots/.error=
+https\://build.shibboleth.net/nexus/content/repositories/releases/.error=Could not transfer artifact com.ncs.microservices\:restful-exception\:pom\:1.0-SNAPSHOT from/to shibboleth (https\://build.shibboleth.net/nexus/content/repositories/releases/)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+@default-shibboleth-https\://build.shibboleth.net/nexus/content/repositories/releases/.lastUpdated=1710746732875

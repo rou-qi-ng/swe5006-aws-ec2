@@ -1,0 +1,12 @@
+spring:
+
+  datasource:
+    url: ${DATABASE_URL:jdbc:mysql://nusiss-swe5006.a.aivencloud.com:25440/db?useSSL=false&serverTimezone=UTC}
+    username: ${DATABASE_USERNAME:avnadmin}
+    password: ${DATABASE_PASSWORD:AVNS_tr4RRPr6MsxrW0njQ45}
+
+
+server:
+  port: 8401
+  servlet:
+    context-path: ${SERVER_SERVLET_CONTEXT_PATH:/beautyApp}

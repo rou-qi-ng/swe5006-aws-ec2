@@ -1,0 +1,103 @@
+<body>
+
+    <mat-drawer-container class="example-container" hasBackdrop="false">
+      <mat-drawer #drawer mode="side">
+        
+        <img style="height: auto; width:60%; margin-left:20%;" src="logo.png" > 
+        <div class="main-content-wrapper">
+        
+
+          <a  style="color: beige; cursor: pointer;" (click)= "routeTo('nails')" (click)="drawer.toggle()">Nails</a>
+          <a  style="color: beige; cursor: pointer;"  (click) = "routeTo('lash')" (click)="drawer.toggle()">Lashes</a>
+          <a  style="color: beige; cursor: pointer;"  (click) = "returnToDashBoard()" (click)="drawer.toggle()">Home</a>
+          <a  style="color: beige; cursor: pointer;"  (click)="logout()">Log out</a>
+        </div>
+      </mat-drawer>
+      <mat-drawer-content>
+     
+        <input type="checkbox"  class="openSidebarMenu" id="openSidebarMenu">
+        <label for="openSidebarMenu" (click)="drawer.toggle()" class="sidebarIconToggle">
+            <div class="spinner diagonal part-1"></div>
+            <div class="spinner horizontal"></div>
+            <div class="spinner diagonal part-2"></div>
+        </label>
+        <div>
+            <mat-card class="no-shadow">
+                <mat-card-header class="heading-title">
+                  <mat-card-title>Welcome {{user}}</mat-card-title>
+                </mat-card-header>
+               
+            </mat-card>
+            
+        </div>
+
+        <div>
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title>Appointments</mat-card-title>
+                  <!-- <mat-card-subtitle>test</mat-card-subtitle> -->
+                </mat-card-header>
+               
+            </mat-card>
+
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title> Available Voucher</mat-card-title>
+                  <!-- <mat-card-subtitle>test</mat-card-subtitle> -->
+                </mat-card-header>
+               
+            </mat-card>
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title> Top Picks </mat-card-title>
+                  <!-- <mat-card-subtitle>test</mat-card-subtitle> -->
+                </mat-card-header>
+               
+            </mat-card>
+
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title> Available Voucher</mat-card-title>
+              
+                </mat-card-header>
+                <mat-card-subtitle style="width: 90%; padding: 5%;">For every successful referral with first
+                    appointment made, you and your friend 
+                    get $5 off!
+                    <br>
+                    <br> Here’s your referral code: <br>
+                    {{refCode}}
+                </mat-card-subtitle>
+               
+            </mat-card>
+
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title> Account Settings</mat-card-title>
+                </mat-card-header>
+               
+            </mat-card>
+
+            <mat-card>
+                <mat-card-header>
+                  <mat-card-title (click)="logout()" style="cursor: pointer;"> Log Out </mat-card-title>
+                </mat-card-header>
+               
+            </mat-card>
+
+
+        </div>
+
+
+        
+      </mat-drawer-content>
+     
+      
+        
+    </mat-drawer-container>
+    
+    
+    
+  
+  </body>
+  
+  

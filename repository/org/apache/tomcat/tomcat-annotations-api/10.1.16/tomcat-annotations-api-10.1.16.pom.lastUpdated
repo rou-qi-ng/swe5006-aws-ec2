@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Mar 18 15:25:46 SGT 2024
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1710746745515
+https\://build.shibboleth.net/nexus/content/repositories/releases/.error=Could not transfer artifact org.apache.tomcat\:tomcat-annotations-api\:pom\:10.1.16 from/to shibboleth (https\://build.shibboleth.net/nexus/content/repositories/releases/)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.tomcat\:tomcat-annotations-api\:pom\:10.1.16 from/to central (https\://repo.maven.apache.org/maven2)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+@default-shibboleth-https\://build.shibboleth.net/nexus/content/repositories/releases/.lastUpdated=1710746746429

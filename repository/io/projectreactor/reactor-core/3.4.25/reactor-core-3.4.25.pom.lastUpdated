@@ -1,0 +1,10 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Mar 18 11:07:11 SGT 2024
+https\://repo.spring.io/libs-snapshot-local/.error=Could not transfer artifact io.projectreactor\:reactor-core\:pom\:3.4.25 from/to spring-snapshots (https\://repo.spring.io/libs-snapshot-local)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1710731230176
+https\://repo.spring.io/libs-milestone-local/.error=Could not transfer artifact io.projectreactor\:reactor-core\:pom\:3.4.25 from/to spring-milestones (https\://repo.spring.io/libs-milestone-local)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+@default-spring-snapshots-https\://repo.spring.io/libs-snapshot-local/.lastUpdated=1710731230569
+@default-spring-releases-https\://repo.spring.io/release/.lastUpdated=1710731231221
+@default-spring-milestones-https\://repo.spring.io/libs-milestone-local/.lastUpdated=1710731230912
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact io.projectreactor\:reactor-core\:pom\:3.4.25 from/to central (https\://repo.maven.apache.org/maven2)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+https\://repo.spring.io/release/.error=Could not transfer artifact io.projectreactor\:reactor-core\:pom\:3.4.25 from/to spring-releases (https\://repo.spring.io/release)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target

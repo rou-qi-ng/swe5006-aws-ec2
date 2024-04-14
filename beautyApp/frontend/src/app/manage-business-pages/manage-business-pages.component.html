@@ -1,0 +1,40 @@
+<body>
+
+    <div class="container">
+        <h2 class="text-center">Service List</h2>
+        <button mat-raised-button color="primary" class="create-button" routerLink="/business">Create Business</button>
+        <br><br>
+        <table class="table table-stripped">
+            <thead>
+                <tr>
+                    <th>Service Name</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let s of service">
+                    <td> {{ s.serviceName }} </td>
+                    <td> {{ s.serviceType }} </td>
+                    <td> {{ s.serviceLocation }} </td>
+                    <td>
+                        <button (click) = "updateService(s.serviceId)" class="btn btn-info">Update</button>
+                        <button *ngIf="serviceStatus === 'Y'" (click)="disableService(s.serviceId)" class="btn btn-warning">Disable</button>
+                        <button *ngIf="serviceStatus !== 'Y'" (click)="enableService(s.serviceId)" class="btn btn-warning">Enable</button>
+                        <button (click) = "deleteService(s.serviceId)" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+            <br><br>
+            <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+        </table>
+    
+    
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Nails Service. All rights reserved.</p>
+        </div>
+    </footer>

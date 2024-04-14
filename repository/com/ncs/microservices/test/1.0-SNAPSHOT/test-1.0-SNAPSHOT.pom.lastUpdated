@@ -1,0 +1,6 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Mar 18 15:27:12 SGT 2024
+https\://oss.sonatype.org/content/repositories/snapshots/.lastUpdated=1709710481056
+https\://oss.sonatype.org/content/repositories/snapshots/.error=
+https\://build.shibboleth.net/nexus/content/repositories/releases/.error=
+https\://build.shibboleth.net/nexus/content/repositories/releases/.lastUpdated=1710746832078

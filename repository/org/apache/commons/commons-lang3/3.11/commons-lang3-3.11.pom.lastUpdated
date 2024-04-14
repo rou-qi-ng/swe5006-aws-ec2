@@ -1,0 +1,8 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Mon Mar 18 11:07:05 SGT 2024
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1710731225219
+https\://build.shibboleth.net/nexus/content/repositories/releases/.error=Could not transfer artifact org.apache.commons\:commons-lang3\:pom\:3.11 from/to shibboleth (https\://build.shibboleth.net/nexus/content/repositories/releases/)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.commons\:commons-lang3\:pom\:3.11 from/to central (https\://repo.maven.apache.org/maven2)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+https\://build.shibboleth.net/nexus/content/groups/public/.error=Could not transfer artifact org.apache.commons\:commons-lang3\:pom\:3.11 from/to shib-release (https\://build.shibboleth.net/nexus/content/groups/public)\: PKIX path building failed\: sun.security.provider.certpath.SunCertPathBuilderException\: unable to find valid certification path to requested target
+@default-shib-release-https\://build.shibboleth.net/nexus/content/groups/public/.lastUpdated=1710731225534
+@default-shibboleth-https\://build.shibboleth.net/nexus/content/repositories/releases/.lastUpdated=1710731225087
