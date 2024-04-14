@@ -2,8 +2,6 @@ package com.example.beautyApp.controller;
 
 import com.example.beautyApp.manager.SearchManager;
 import com.example.beautyApp.model.ServiceProfile;
-import com.example.beautyApp.model.TB_User;
-import com.example.beautyApp.request.LoginRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
