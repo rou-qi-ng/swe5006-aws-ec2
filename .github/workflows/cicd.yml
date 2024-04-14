@@ -1,3 +1,43 @@
+# name: CICD
+
+# on:
+#   push:
+#     branches: [master]
+
+# jobs:
+#   build:
+#     runs-on: [ubuntu-latest]
+#     steps:
+#       - name: Checkout source
+#         uses: actions/checkout@v3
+#       - name: Setup Java
+#         uses: actions/setup-java@v3
+#         with:
+#           distribution: 'temurin'
+#           java-version: '17'
+#       - name: Build Project
+#         # working-directory: /home/runner/work/swe5006-aws-ec2/swe5006-aws-ec2/beautyApp/backend
+#         run: mvn clean package -DskipTests
+#       - name: Login to docker hub
+#         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
+#       - name: Build docker image
+#         run: docker build -t sangasangasanga/swe5006-aws-ec2 .
+#       - name: Publish image to docker hub
+#         run: docker push sangasangasanga/swe5006-aws-ec2:latest
+
+#   deploy:
+#     needs: build
+#     runs-on: [swe5006-aws-ec2]
+#     steps:
+#       - name: Pull Image from docker hub
+#         run: sudo docker pull sangasangasanga/swe5006-aws-ec2:latest
+#       - name: Delete old container
+#         run: sudo docker rm -f deploy-container || true
+#       - name: Run docker container
+#         run: sudo docker run -d -p 8080:8080 --name deploy-container sangasangasanga/swe5006-aws-ec2
+
+
+
 name: CICD
 
 on:
@@ -6,32 +46,73 @@ on:
 
 jobs:
   build:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
+      # Checkout source code
       - name: Checkout source
         uses: actions/checkout@v3
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-      - name: Build Project
-        working-directory: /home/runner/work/swe5006-aws-ec2/swe5006-aws-ec2/beautyApp/backend
-        run: mvn clean install -DskipTests
-      - name: Login to docker hub
-        run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-      - name: Build docker image
-        run: docker build -t sangasangasanga/swe5006-aws-ec2 .
-      - name: Publish image to docker hub
-        run: docker push sangasangasanga/swe5006-aws-ec2:latest
+
+      # Build Backend Project
+      - name: Build Backend Project
+        working-directory: ./beautyApp/backend
+        run: mvn clean package -DskipTests
+
+      # Build Frontend
+      - name: Build Frontend Docker Image
+        working-directory: ./beautyApp/frontend
+        run: |
+          docker build -t sangasangasanga/ec2-frontend:latest -f Dockerfile .
+      
+      # Build Backend
+      - name: Build Backend Docker Image
+        working-directory: ./beautyApp/backend
+        run: |
+          docker build -t sangasangasanga/ec2-backend:latest -f Dockerfile .
+      
+      # Login to Docker Hub
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      # Push Frontend Docker Image
+      - name: Push Frontend Docker Image
+        run: docker push sangasangasanga/ec2-frontend:latest
+      
+      # Push Backend Docker Image
+      - name: Push Backend Docker Image
+        run: docker push sangasangasanga/ec2-backend:latest
 
   deploy:
     needs: build
-    runs-on: [swe5006-aws-ec2]
+    runs-on: ubuntu-latest
     steps:
-      - name: Pull Image from docker hub
-        run: sudo docker pull sangasangasanga/swe5006-aws-ec2:latest
-      - name: Delete old container
-        run: sudo docker rm -f deploy-container || true
-      - name: Run docker container
-        run: sudo docker run -d -p 8080:8080 --name deploy-container sangasangasanga/swe5006-aws-ec2
+  # Pull Frontend Docker Image
+      - name: Pull Frontend Docker Image
+        run: docker pull sangasangasanga/ec2-frontend:latest
+      
+      # Pull Backend Docker Image
+      - name: Pull Backend Docker Image
+        run: docker pull sangasangasanga/ec2-backend:latest
+      
+      # Remove existing Frontend container
+      - name: Remove existing Frontend container
+        run: docker rm -f frontend-container || true
+      
+      # Remove existing Backend container
+      - name: Remove existing Backend container
+        run: docker rm -f backend-container || true
+      
+      # Optionally, remove existing Frontend image
+      - name: Remove existing Frontend image
+        run: docker rmi sangasangasanga/ec2-frontend:latest || true
+      
+      # Optionally, remove existing Backend image
+      - name: Remove existing Backend image
+        run: docker rmi sangasangasanga/ec2-backend:latest || true
+      
+      # Deploy Frontend
+      - name: Deploy Frontend
+        run: docker run -d -p 80:80 --name frontend-container sangasangasanga/ec2-frontend:latest
+      
+      # Deploy Backend
+      - name: Deploy Backend
+        run: docker run -d -p 8080:8080 --name backend-container sangasangasanga/ec2-backend:latest
