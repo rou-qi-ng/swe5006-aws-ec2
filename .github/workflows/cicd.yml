@@ -27,7 +27,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [aws-ec2]
+    runs-on: [swe5006-aws-ec2]
     steps:
       - name: Pull Image from docker hub
         run: sudo docker pull sangasangasanga/swe5006-aws-ec2:latest
