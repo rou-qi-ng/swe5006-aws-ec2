@@ -64,30 +64,39 @@
 # CMD ["node", "app.js"]
 
 
-# Use an official Node.js runtime as the base image
-FROM node:18
+# Define the build stage
+FROM node:18 as build-stage
 
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if available)
+# Copy package.json and package-lock.json
 COPY package.json package-lock.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the application source code
+# Copy the Angular app source code
 COPY . .
+
+# Build the Angular app
+RUN npm run build --prod
+
+# Define the runtime stage
+FROM node:18
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the build output from the build-stage
-COPY --from=build-stage /app/dist/frontend /app/frontend/dist/frontend
+# Copy the build output from the build-stage to the runtime stage
+COPY --from=build-stage /app/dist/frontend /app/public
 
-
-# Expose the port your application will run on
-EXPOSE 3000
+# Install the necessary dependencies
+COPY package.json package-lock.json ./
+RUN npm install
 
 # Define the entry point of the application
 CMD ["node", "app.js"]
+
+# Expose the port your application will run on
+EXPOSE 3000

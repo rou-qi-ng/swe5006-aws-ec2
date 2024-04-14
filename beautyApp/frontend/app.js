@@ -4,11 +4,11 @@ const path = require('path');
 const app = express();
 
 // Serve static files from the Angular build output directory
-app.use(express.static(path.join(__dirname, 'frontend/dist/frontend')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Redirect all requests to the Angular app
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend/dist/frontend', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Listen on a specific port
