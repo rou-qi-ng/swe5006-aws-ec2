@@ -79,6 +79,9 @@ RUN npm install
 # Copy the application source code
 COPY . .
 
+# Set the working directory
+WORKDIR /app
+
 # Copy the build output from the build-stage
 COPY --from=build-stage /app/dist/frontend /app/frontend/dist/frontend
 
