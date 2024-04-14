@@ -92,6 +92,7 @@ jobs:
     steps:
       # Pull Frontend Docker Image
       - name: Pull Frontend Docker Image
+        run: docker system prune -f
         run: docker pull sangasangasanga/ec2-frontend:latest
       
       # Remove existing Frontend container
