@@ -74,6 +74,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Install dependencies
+RUN npm cache clean --force
 RUN npm install
 
 # Copy the Angular app source code
