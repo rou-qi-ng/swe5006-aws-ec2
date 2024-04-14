@@ -68,7 +68,7 @@
 FROM node:18 as build-stage
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /app/frontend
 
 # Copy package.json and package-lock.json
 COPY package.json package-lock.json ./
@@ -85,18 +85,20 @@ RUN npm run build --prod
 # Define the runtime stage
 FROM node:18
 
-# Set the working directory
+# Set the working directory for the runtime stage
 WORKDIR /app
 
-# Copy the build output from the build-stage to the runtime stage
-COPY --from=build-stage /app/dist/frontend /app/public
+# Copy the build output from the build stage to the runtime stage
+COPY --from=build-stage /app/frontend/dist/frontend /app/public
 
-# Install the necessary dependencies
+# Copy package.json and package-lock.json
 COPY package.json package-lock.json ./
-RUN npm install
 
-# Define the entry point of the application
-CMD ["node", "app.js"]
+# Install dependencies (if any are required in the runtime stage)
+RUN npm install
 
 # Expose the port your application will run on
 EXPOSE 3000
+
+# Define the entry point of the application
+CMD ["node", "app.js"]
