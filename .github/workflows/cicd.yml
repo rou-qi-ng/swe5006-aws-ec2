@@ -83,6 +83,7 @@ jobs:
         run: docker push sangasangasanga/ec2-frontend:latest
       
       # Push Backend Docker Image
+      - name: Push Backend Docker Image
         run: docker push sangasangasanga/ec2-backend:latest
 
   deploy-frontend:
