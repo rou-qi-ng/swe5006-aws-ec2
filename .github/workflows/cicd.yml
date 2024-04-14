@@ -37,7 +37,6 @@
 #         run: sudo docker run -d -p 8080:8080 --name deploy-container sangasangasanga/swe5006-aws-ec2
 
 
-
 name: CICD
 
 on:
@@ -63,13 +62,13 @@ jobs:
         working-directory: ./beautyApp/backend
         run: mvn clean package -DskipTests
 
-      # Build Frontend
+      # Build Frontend Docker Image
       - name: Build Frontend Docker Image
         working-directory: ./beautyApp/frontend
         run: |
           docker build -t sangasangasanga/ec2-frontend:latest -f Dockerfile .
       
-      # Build Backend
+      # Build Backend Docker Image
       - name: Build Backend Docker Image
         working-directory: ./beautyApp/backend
         run: |
@@ -84,40 +83,35 @@ jobs:
         run: docker push sangasangasanga/ec2-frontend:latest
       
       # Push Backend Docker Image
-      - name: Push Backend Docker Image
         run: docker push sangasangasanga/ec2-backend:latest
 
-  deploy:
+  deploy-frontend:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: frontend # specify the name or label of your frontend EC2 instance runner
     steps:
-  # Pull Frontend Docker Image
+      # Pull Frontend Docker Image
       - name: Pull Frontend Docker Image
         run: docker pull sangasangasanga/ec2-frontend:latest
-      
-      # Pull Backend Docker Image
-      - name: Pull Backend Docker Image
-        run: docker pull sangasangasanga/ec2-backend:latest
       
       # Remove existing Frontend container
       - name: Remove existing Frontend container
         run: docker rm -f frontend-container || true
       
-      # Remove existing Backend container
-      - name: Remove existing Backend container
-        run: docker rm -f backend-container || true
-      
-      # Optionally, remove existing Frontend image
-      - name: Remove existing Frontend image
-        run: docker rmi sangasangasanga/ec2-frontend:latest || true
-      
-      # Optionally, remove existing Backend image
-      - name: Remove existing Backend image
-        run: docker rmi sangasangasanga/ec2-backend:latest || true
-      
       # Deploy Frontend
       - name: Deploy Frontend
         run: docker run -d -p 80:80 --name frontend-container sangasangasanga/ec2-frontend:latest
+      
+  deploy-backend:
+    needs: build
+    runs-on: backend # specify the name or label of your backend EC2 instance runner
+    steps:
+      # Pull Backend Docker Image
+      - name: Pull Backend Docker Image
+        run: docker pull sangasangasanga/ec2-backend:latest
+      
+      # Remove existing Backend container
+      - name: Remove existing Backend container
+        run: docker rm -f backend-container || true
       
       # Deploy Backend
       - name: Deploy Backend
