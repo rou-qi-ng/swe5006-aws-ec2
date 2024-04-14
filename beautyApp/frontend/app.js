@@ -1,22 +1,19 @@
-// Import the express module
 const express = require('express');
+const path = require('path');
 
-// Create an instance of an Express application
+// Create an Express application
 const app = express();
 
-// Serve the built Angular app from the 'public' directory
-app.use(express.static('public'));
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Define a route for the root URL (/)
-// This route will serve the Angular app's index.html file
-app.get('*', (req, res) => {
-    res.sendFile('index.html', { root: 'public' });
+// Redirect all routes to the index.html file (SPA)
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Define the port the server will listen on
+// Start the server on port 3000
 const PORT = process.env.PORT || 3000;
-
-// Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

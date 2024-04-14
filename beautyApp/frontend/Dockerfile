@@ -42,10 +42,8 @@ COPY . .
 # Build the Angular app
 RUN npm run build --prod
 
-# Use a different base image if not using Nginx
-# For example, you can use node:18 again and use a simple script to serve static files
-
-# FROM node:18
+# Use a different base image (node:18) to serve the built app
+FROM node:18
 
 # Set the working directory
 WORKDIR /app
@@ -56,6 +54,5 @@ COPY --from=build-stage /app/dist/frontend /app/public
 # Expose the port your server will listen on (e.g., 3000)
 EXPOSE 3000
 
-# You can use a simple Node.js script to serve the built app
-# For example, with express:
+# Start the Express server
 CMD ["node", "app.js"]
