@@ -1,19 +1,18 @@
 const express = require('express');
 const path = require('path');
 
-// Create an Express application
 const app = express();
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from the Angular build output directory
+app.use(express.static(path.join(__dirname, 'frontend/dist/frontend')));
 
-// Redirect all routes to the index.html file (SPA)
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// Redirect all requests to the Angular app
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/dist/frontend', 'index.html'));
 });
 
-// Start the server on port 3000
+// Listen on a specific port
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
